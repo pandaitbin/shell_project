@@ -2,9 +2,9 @@
 #Author: Vicente Liu
 #Date: 05/27/2018
 
-unset OS OS_Name OS_Version Architecture KernelRelease Loadaverage Uptime
+unset OS OS_Name OS_Version Architecture KernelRelease Loadaverage Uptime_time Uptime_days HOSTNAME Memory Swap
 
-echo -n -e "=============== OS Informatican ===============\n"
+echo -n -e "\n=============== OS Informatican ===============\n\n"
 
 # OS Type
 OS=$(uname -o)
@@ -27,7 +27,7 @@ echo -n -e "Architecture : $Architecture\n"
 KernelRelease=$(uname -r)
 echo -n -e "Kernel Release : $KernelRelease\n"
 
-echo -n -e "=============== System Informatican ===============\n"
+echo -n -e "\n=============== System Informatican ===============\n\n"
 
 # Hostname
 HOSTNAME=$(hostname)
@@ -50,4 +50,4 @@ echo -n -e "Ram Usages :\n $Memory\n"
 Swap=$(free -h | grep Swap)
 echo -n -e "Swap Usages :\n $Swap\n"
 
-unset OS OS_Name OS_Version Architecture KernelRelease Loadaverage Uptime
+unset OS OS_Name OS_Version Architecture KernelRelease Loadaverage Uptime_time Uptime_days HOSTNAME Memory Swap
