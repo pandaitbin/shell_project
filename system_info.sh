@@ -4,8 +4,8 @@
 
 echo -e "----------Test OS----------\n"
 
-v_name=`uname -v | awk -F '-' '{print $2}' | awk -F ' ' '{print $1}'`
-v_number=`uname -v | awk -F '~' '{print $2}' | awk -F '-' '{print $1}'`
+v_name=$(uname -v | awk -F '-' '{print $2}' | awk -F ' ' '{print $1}')
+v_number=$(uname -v | awk -F '~' '{print $2}' | awk -F '-' '{print $1}')
 
 echo -e "Linux Version: $v_name $v_number\n"
 
