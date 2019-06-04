@@ -2,12 +2,15 @@
 #Author: Vicente Liu
 #Date: 05/27/2018
 
-echo -e "----------Test OS----------"
-uname -v | awk -F '-' '{print $2}' | awk -F ' ' '{print $1}'
-uname -v | awk -F '~' '{print $2}' | awk -F '-' '{print $1}'
+echo -e "----------Test OS----------\n"
 
-echo -e "----------System Information ----------"
-who | awk -F ' ' '{printe $1}'
+v_name=`uname -v | awk -F '-' '{print $2}' | awk -F ' ' '{print $1}'`
+v_number=`uname -v | awk -F '~' '{print $2}' | awk -F '-' '{print $1}'`
+
+echo -e "Linux Version: $v_name $v_number\n"
+
+echo -e "----------System Information ----------\n"
+#who | awk -F ' ' '{printe $1}'
 
 cat /etc/hosts | grep ubuntu-desktop
 cat /etc/resolv.conf | grep nameserver
