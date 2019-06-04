@@ -34,11 +34,20 @@ HOSTNAME=$(hostname)
 echo -n -e "Hostname : $HOSTNAME\n"
 
 # Load Average
-Loadaverage=$(top -n 1 -b | grep "load average:" | awk '{print $10 $11 $12}')
+Loadaverage=$(top -n 1 -b | grep "load average:" | awk -F ' ' '{print $12 $13 $14}')
 echo -n -e "Load Average : $Loadaverage\n"
 
 # System Uptime
-Uptime=$(uptime | awk '{print $3,$4}' | cut -f1 -d,)
-echo -n -e "System Uptime Days/(HH:MM) : $Uptime\n"
+Uptime_days=$(uptime | awk -F ' ' '{print $3 $4 $5}' | cut -f1 -d,)
+Uptime_time=$(uptime | awk -F ' ' '{print $3 $4 $5}' | cut -f2 -d,)
+echo -n -e "System Uptime Days/(HH:MM) : $Uptime_days/$Uptime_time\n"
+
+#RAM and SWAP Usages
+Memory=$(free -h | grep Mem)
+
+echo -n -e "Ram Usages :\n $Memory\n"
+
+Swap=$(free -h | grep Swap)
+echo -n -e "Swap Usages :\n $Swap\n"
 
 unset OS OS_Name OS_Version Architecture KernelRelease Loadaverage Uptime
